@@ -102,10 +102,10 @@ fun ShimmerCatalogGrid(
 @Composable
 private fun getGridItemCount(): Int{
     return if(MaterialTheme.window.isLandScape()){
-        2
+        3
     }
     else{
-        1
+        2
     }
 }
 

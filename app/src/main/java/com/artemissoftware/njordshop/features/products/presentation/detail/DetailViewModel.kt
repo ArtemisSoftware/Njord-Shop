@@ -9,10 +9,11 @@ import com.artemissoftware.njordshop.core.presentation.ui.composables.text.UiTex
 import com.artemissoftware.njordshop.core.presentation.ui.models.ErrorData
 import com.artemissoftware.njordshop.core.presentation.ui.util.extensions.toUiText
 import com.artemissoftware.njordshop.features.products.domain.usecase.GetProductUseCase
+import com.artemissoftware.njordshop.features.products.presentation.detail.model.toUiModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.flow.updateAndGet
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -40,8 +41,7 @@ internal class DetailViewModel @Inject constructor(
     }
 
     private fun updateState(update: (DetailState) -> DetailState) {
-        // TODO: verificar isto
-        //savedStateHandle["state"] = _state.updateAndGet { update(it) }
+        savedStateHandle["state"] = _state.updateAndGet { update(it) }
     }
 
     private fun getProduct(id: Int) = with(_state) {
@@ -53,33 +53,26 @@ internal class DetailViewModel @Inject constructor(
         viewModelScope.launch {
             getProductUseCase(id = id)
                 .onSuccess { product ->
-                    update {
-                        // TODO: alterar depois
-                    //updateState {
-                        it.copy(product = product, isLoading = false, error = null)
+                    updateState {
+                        it.copy(
+                            product = product.toUiModel(),
+                            isLoading = false,
+                            error = null
+                        )
                     }
                 }
                 .onFailure { error ->
-                    update {
-                        // TODO: alterar depois
-                        //updateState {
+                    updateState {
                         it.copy(
                             product = null,
                             isLoading = false,
                             error = ErrorData(
                                 message = error.toUiText(),
                                 buttonText = UiText.StringResource(R.string.try_again),
-                                onClick = {
-                                    reload(id)
-                                }
                             ),
                         )
                     }
                 }
         }
-    }
-
-    private fun reload(id: Int){
-        getProduct(id)
     }
 }

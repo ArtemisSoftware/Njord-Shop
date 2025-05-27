@@ -23,7 +23,6 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -42,6 +41,7 @@ import com.artemissoftware.njordshop.core.presentation.ui.composables.scaffold.N
 import com.artemissoftware.njordshop.features.products.presentation.detail.composables.AboutDescription
 import com.artemissoftware.njordshop.features.products.presentation.detail.composables.DetailMediumTopAppBar
 import com.artemissoftware.njordshop.features.products.presentation.detail.composables.DetailTopBar
+import com.artemissoftware.njordshop.features.products.presentation.detail.model.toProduct
 
 @Composable
 internal fun DetailScreen(
@@ -53,7 +53,6 @@ internal fun DetailScreen(
     DetailContent(
         state = state,
         onPopBack = onPopBack,
-//        onEvent = viewModel::onTriggerEvent
     )
 }
 
@@ -61,7 +60,6 @@ internal fun DetailScreen(
 private fun DetailContent(
     state: DetailState,
     onPopBack: () -> Unit,
-//    onEvent: (DetailEvent) -> Unit,
 ) {
     WindowContent(
         landScapeContent = {
@@ -116,7 +114,6 @@ private fun PortraitContent(
                 state = scrollState,
             ) {
                 item {
-                    val imageHeight = with(LocalDensity.current) { 250.dp.toPx() }
                     val collapseFraction = scrollBehavior.state.collapsedFraction
 
                     Box(
@@ -149,7 +146,7 @@ private fun PortraitContent(
                             verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.spacing1_5)
                         ) {
                             AboutDescription(
-                                product = it,
+                                product = it.toProduct(),
                                 modifier = Modifier
                                     .fillMaxSize()
                                     .padding(all = MaterialTheme.spacing.spacing3),
@@ -211,7 +208,7 @@ private fun LandScapeContent(
                     verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.spacing1_5)
                 ) {
                     AboutDescription(
-                        product = it,
+                        product = it.toProduct(),
                         modifier = Modifier
                             .fillMaxSize()
                             .padding(all = MaterialTheme.spacing.spacing3),
@@ -230,7 +227,6 @@ private fun DetailContentPreview() {
         DetailContent(
             state = DetailState(),
             onPopBack = {},
-//            onEvent = {}
         )
     }
 }
