@@ -116,10 +116,9 @@ internal class CatalogViewModel @Inject constructor(
                         it.copy(
                             searchResult = emptyList(),
                             isLoading = false,
+                            isSearching = false,
                             error = ErrorData(
-                                message = error.toUiText(),
-                                buttonText = UiText.StringResource(R.string.try_again),
-                                onClick = {}
+                                message = error.toUiText()
                             ),
                         )
                     }

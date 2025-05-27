@@ -71,8 +71,7 @@ private fun CatalogContent(
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .statusBarsPadding()
-                    .navigationBarsPadding(),
+                    .statusBarsPadding(),
                 verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.spacing1_5)
             ) {
 

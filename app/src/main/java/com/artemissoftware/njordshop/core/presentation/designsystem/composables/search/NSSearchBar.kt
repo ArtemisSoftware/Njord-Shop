@@ -49,6 +49,7 @@ fun NSSearchBar(
                     Icon(
                         painter = painterResource(id = R.drawable.ic_search),
                         contentDescription = null,
+                        tint = if(isSearching) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant,
                     )
                 },
                 trailingIcon = {
@@ -61,7 +62,7 @@ fun NSSearchBar(
                             contentDescription = null,
                         )
                     }
-                    AnimatedVisibility(visible = !isSearching && text.isNotEmpty()) {
+                    AnimatedVisibility(visible = !isSearching) {
                         Icon(
                             modifier = Modifier.clickable {
                                 onClearSearch()
