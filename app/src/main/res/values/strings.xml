@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">NjordShop</string>
+    <string name="app_name_catalog">NjordShop Catalog</string>
+    <string name="app_name_form">NjordShop Form</string>
     <string name="rating">Avaliação</string>
     <string name="try_again">Tentar novamente</string>
     <string name="error_occurred_try_reload">Ocorreu um erro - reload</string>

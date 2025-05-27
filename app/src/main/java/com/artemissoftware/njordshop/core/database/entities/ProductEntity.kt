@@ -14,5 +14,5 @@ data class ProductEntity(
     val rating: Double,
     val thumbnail: String,
     val stock: Int,
-    val images: String, // TODO: provisório, se tiver tempo quero todas
+    val images: String,
 )

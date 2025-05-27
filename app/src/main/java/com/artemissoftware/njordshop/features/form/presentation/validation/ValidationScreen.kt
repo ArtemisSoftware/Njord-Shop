@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
@@ -21,6 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -132,7 +132,9 @@ private fun ValidationContent(
                             },
                             isError = if(state.promotionalCode.isEmpty()) false else !state.isPromotionalCodeValid,
                             keyboardOptions = KeyboardOptions.Default.copy(
-                                imeAction = ImeAction.Next,
+                                imeAction = ImeAction.Done,
+                                capitalization = KeyboardCapitalization.Characters,
+                                keyboardType = KeyboardType.Text
                             ),
                         )
                     }

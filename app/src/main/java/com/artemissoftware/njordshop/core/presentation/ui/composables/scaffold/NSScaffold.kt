@@ -76,33 +76,38 @@ fun NSScaffoldDouble(
     isLoading: Boolean = false,
     error: ErrorData? = null,
 ) {
-    Box(
-        modifier = Modifier.fillMaxSize()
-    ) {
+    Scaffold(
+        modifier = Modifier,
+        content = { innerPadding ->
+            Box(
+                modifier = Modifier.fillMaxSize().padding(innerPadding)
+            ) {
 
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-        ) {
-            Box(modifier = Modifier.weight(0.5F)) {
-                contentLeft.invoke()
-            }
-            Box(modifier = Modifier.weight(0.5F)) {
-                contentRight.invoke()
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                ) {
+                    Box(modifier = Modifier.weight(0.5F)) {
+                        contentLeft.invoke()
+                    }
+                    Box(modifier = Modifier.weight(0.5F)) {
+                        contentRight.invoke()
+                    }
+                }
+
+
+                LoadingProgress(isLoading = isLoading)
+
+                error?.let {
+                    PlaceHolderContent(
+                        icon = R.drawable.ic_error_image,
+                        message = it.message.asString(),
+                        onClick = it.onClick,
+                        buttonText = it.buttonText.asString(),
+                    )
+                }
             }
         }
-
-
-        LoadingProgress(isLoading = isLoading)
-
-        error?.let {
-            PlaceHolderContent(
-                icon = R.drawable.ic_error_image,
-                message = it.message.asString(),
-                onClick = it.onClick,
-                buttonText = it.buttonText.asString(),
-            )
-        }
-    }
+    )
 }
 
 @Preview

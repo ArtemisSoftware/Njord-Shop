@@ -10,7 +10,7 @@ internal fun ProductDto.toEntity(): ProductEntity{
         id = id,
         title = title,
         discountPercentage = discountPercentage,
-        images = images.first(), // TODO: ver se gravo todas as imagens ou só a primeira
+        images = images.first(),
         rating = rating,
         thumbnail = thumbnail,
         price = price,
@@ -24,7 +24,7 @@ internal fun ProductEntity.toProduct(): Product{
         id = id,
         title = title,
         discountPercentage = discountPercentage,
-        images = listOf(images), // TODO: ver se gravo todas as imagens ou só a primeira
+        images = listOf(images),
         price = price,
         rating = rating,
         stock = stock
