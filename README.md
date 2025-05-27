@@ -38,20 +38,20 @@ The form validates all user input locally.
 
 `catalog`
 
-Image #1            |  Image #2             |  Image #3           
-:-------------------------:|:----------------------------:|:----------------------------:
-<img src="images/BeeRace_1.jpg">   | <img src="images/BeeRace_1.jpg">         | <img src="images/BeeRace_1.jpg">
+|                  Image #1                  |                  Image #2                  |                  Image #3                  |
+|:------------------------------------------:|:------------------------------------------:|:------------------------------------------:|
+| <img src="images/NjordShop_Catalog_1.jpg"> | <img src="images/NjordShop_Catalog_2.jpg"> | <img src="images/NjordShop_Catalog_3.jpg"> |
 
 `form`
 
-Image #1            |  Image #2                
-:-------------------------:|:----------------------------:
-<img src="images/BeeRace_1.jpg">   | <img src="images/BeeRace_1.jpg">  
+|                Image #1                 |                Image #2                 |
+|:---------------------------------------:|:---------------------------------------:|
+| <img src="images/NjordShop_Form_1.jpg"> | <img src="images/NjordShop_Form_2.jpg"> |
 
 ## Product Flavors
 
-| Flavor | Functionality |
-|--------|----------------|
+| Flavor    | Functionality           |
+|-----------|-------------------------|
 | `catalog` | Listing and detail only |
-| `form`    | Validated form only |
+| `form`    | Validated form only     |
 
