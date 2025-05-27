@@ -70,8 +70,12 @@ internal class CatalogViewModel @Inject constructor(
         viewModelScope.launch {
             preloadCatalogUseCase()
                 .onSuccess {
-                    if(forceReload)
+                    if(forceReload) {
                         getCatalog()
+                    }
+                    update {
+                        it.copy(isLoading = false, error = null)
+                    }
                 }
                 .onFailure { error ->
                     update {
@@ -99,7 +103,7 @@ internal class CatalogViewModel @Inject constructor(
             .cachedIn(viewModelScope)
 
         update {
-            it.copy(products = products, isLoading = false)
+            it.copy(products = products)
         }
     }
 
