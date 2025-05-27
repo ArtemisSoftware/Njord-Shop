@@ -1,6 +1,5 @@
 package com.artemissoftware.njordshop.features.form.domain.validator
 
-import java.text.Normalizer
 import java.time.DayOfWeek
 import java.time.LocalDate
 import javax.inject.Inject
