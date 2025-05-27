@@ -5,7 +5,9 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.RawQuery
 import androidx.room.Transaction
+import androidx.sqlite.db.SupportSQLiteQuery
 import com.artemissoftware.njordshop.core.database.entities.ProductEntity
 import com.artemissoftware.njordshop.core.database.entities.ProductFtsEntity
 
@@ -35,6 +37,9 @@ interface ProductDao {
         WHERE products_fts MATCH :query
     """)
     suspend fun searchProducts(query: String): List<ProductEntity>
+
+    @RawQuery
+    suspend fun searchWithQuery(query: SupportSQLiteQuery): List<ProductEntity>
 
     @Transaction
     suspend fun clearAndSave(productEntities: List<ProductEntity>){

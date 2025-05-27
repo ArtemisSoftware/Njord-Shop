@@ -2,6 +2,7 @@ package com.artemissoftware.njordshop.util.fake
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
+import androidx.sqlite.db.SupportSQLiteQuery
 import com.artemissoftware.njordshop.core.database.dao.ProductDao
 import com.artemissoftware.njordshop.core.database.entities.ProductEntity
 import com.artemissoftware.njordshop.core.database.entities.ProductFtsEntity
@@ -51,6 +52,10 @@ class FakeProductDao : ProductDao {
         }.keys
 
         return products.filter { it.id in matchedIds }
+    }
+
+    override suspend fun searchWithQuery(query: SupportSQLiteQuery): List<ProductEntity> {
+        return emptyList()
     }
 
     override suspend fun clearAndSave(productEntities: List<ProductEntity>) {

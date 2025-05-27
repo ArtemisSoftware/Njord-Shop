@@ -56,7 +56,7 @@ class ProductsRepositoryImplTest {
         val result = productsRepository.getProduct(1)
 
         val resource = (result as Resource.Success)
-        assertThat(resource.data).isEqualTo(listOf(listOf(TestData.product)))
+        assertThat(resource.data).isEqualTo(TestData.product)
     }
 
     @Test

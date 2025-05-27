@@ -4,6 +4,7 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.map
+import com.artemissoftware.njordshop.core.database.util.buildSearchQuery
 import com.artemissoftware.njordshop.core.database.dao.ProductDao
 import com.artemissoftware.njordshop.core.database.entities.ProductEntity
 import com.artemissoftware.njordshop.core.domain.Resource
@@ -38,7 +39,7 @@ class ProductsRepositoryImpl(
     }
 
     override suspend fun search(query: String): Resource<List<ProductEntry>> {
-        val result = productDao.searchProducts(query)
+        val result = (productDao.searchProducts(query) + fallBackSearch(query)).distinctBy { it.id }
 
         return if(result.isEmpty()){
             Resource.Failure(NjordShopError.SearchWithNoResults)
@@ -46,6 +47,15 @@ class ProductsRepositoryImpl(
         else {
             Resource.Success(result.map { it.toProductEntry() })
         }
+    }
+
+    private suspend fun fallBackSearch(query: String): List<ProductEntity> {
+
+        val terms = query.trim().split("\\s+".toRegex())
+        val likeQuery = buildSearchQuery(terms)
+        val result = productDao.searchWithQuery(likeQuery)
+
+        return result
     }
 
     override suspend fun getProduct(id: Int): Resource<Product> {
