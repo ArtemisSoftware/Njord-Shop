@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.ksp)
     alias(libs.plugins.hilt)
     alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.de.mannodermaus.android.junit5)
 }
 
 android {
@@ -30,6 +31,23 @@ android {
             )
         }
     }
+
+    flavorDimensions += "mode"
+
+    productFlavors {
+        create("catalog") {
+            dimension = "mode"
+            applicationIdSuffix = ".catalog"
+            versionNameSuffix = "-catalog"
+        }
+
+        create("form") {
+            dimension = "mode"
+            applicationIdSuffix = ".form"
+            versionNameSuffix = "-form"
+        }
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
@@ -75,7 +93,18 @@ dependencies {
     implementation(libs.navigation.compose)
     implementation(libs.kotlinx.serialization.json)
 
+    implementation(libs.coil.compose)
+    implementation(libs.coil.network.okhttp)
+
     testImplementation(libs.junit)
+    testImplementation(libs.junit.jupiter.api)
+    testRuntimeOnly(libs.junit.jupiter.engine)
+    testImplementation(libs.junit.jupiter.params)
+    testImplementation(libs.assertk)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.turbine)
+
+
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
