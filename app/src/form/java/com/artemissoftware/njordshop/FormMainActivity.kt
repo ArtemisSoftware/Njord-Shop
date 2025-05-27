@@ -5,8 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.navigation.compose.rememberNavController
-import com.artemissoftware.njordshop.core.presentation.designsystem.theme.FormTheme
-import com.artemissoftware.njordshop.core.presentation.designsystem.theme.NjordShopTheme
+import com.artemissoftware.njordshop.core.presentation.designsystem.theme.NjordShopFormTheme
 import com.artemissoftware.njordshop.features.form.presentation.navigation.FormRoute
 import com.artemissoftware.njordshop.navigation.RootNavGraph
 import dagger.hilt.android.AndroidEntryPoint
@@ -17,7 +16,7 @@ class FormMainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            FormTheme  {
+            NjordShopFormTheme {
                 val navController = rememberNavController()
 
                 RootNavGraph(
