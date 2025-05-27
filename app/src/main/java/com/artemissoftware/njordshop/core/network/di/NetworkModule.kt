@@ -1,5 +1,6 @@
 package com.artemissoftware.njordshop.core.network.di
 
+import com.artemissoftware.njordshop.BuildConfig
 import com.artemissoftware.njordshop.core.network.DummyjsonApi
 import dagger.Module
 import dagger.Provides
@@ -30,7 +31,7 @@ object NetworkModule {
     @Singleton
     fun provideRetrofit(/*okHttpClient: OkHttpClient*/): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("https://dummyjson.com/") // TODO: change this
+            .baseUrl(BuildConfig.BASE_URL)
             //.client(okHttpClient)
             .addConverterFactory(MoshiConverterFactory.create())
             .build()

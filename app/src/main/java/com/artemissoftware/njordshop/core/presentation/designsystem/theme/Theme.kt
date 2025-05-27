@@ -66,8 +66,6 @@ fun NjordShopTheme(
         localDimension provides if(isLandScape) dimensionLandScape else dimensionPortrait,
         localFixedPalette provides fixedPalette,
         localShape provides shape,
-        // TODO: verificar
-//        localPalette provides if (darkTheme) paletteDark else paletteLight,
     ) {
         MaterialTheme(
             colorScheme = colorScheme,
