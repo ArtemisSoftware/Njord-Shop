@@ -61,7 +61,7 @@ object DtoTestData {
     )
 
     val catalogDto = CatalogDto(
-        limit = 10,
+        limit = 1,
         products = listOf(productDto),
         skip = 0,
         total = 1
