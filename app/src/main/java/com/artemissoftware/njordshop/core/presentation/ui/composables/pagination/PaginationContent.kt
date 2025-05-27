@@ -12,7 +12,7 @@ import com.artemissoftware.njordshop.core.presentation.ui.util.extensions.toUiTe
 fun <T : Any>PaginationContent(
     items: LazyPagingItems<T>,
     loadingContent: @Composable () -> Unit,
-    errorContent: @Composable (UiText) -> Unit,
+    errorContent: @Composable (UiText) -> Unit = {},
     content: @Composable (LazyPagingItems<T>, UiText?) -> Unit,
 ) {
     items.apply {

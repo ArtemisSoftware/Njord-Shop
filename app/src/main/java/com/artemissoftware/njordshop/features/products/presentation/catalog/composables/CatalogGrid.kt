@@ -25,8 +25,8 @@ fun CatalogGrid(
     state: LazyGridState,
     entries: LazyPagingItems<ProductEntry>,
     onClick: (ProductEntry) -> Unit,
-    reloadContent: @Composable () -> Unit,
     modifier: Modifier = Modifier,
+    reloadContent: @Composable () -> Unit = {},
 ) {
     val gridSpan = getGridItemCount()
     val span: (LazyGridItemSpanScope) -> GridItemSpan = { GridItemSpan(gridSpan) }

@@ -125,16 +125,7 @@ private fun CatalogContent(
                                             .padding(horizontal = MaterialTheme.spacing.spacing3)
                                     )
                                 },
-                                errorContent = { error ->
-                                    PlaceHolderContent(
-                                        message = error.asString(),
-                                        buttonText = stringResource(id = R.string.try_again),
-                                        onClick = {
-                                            item.refresh()
-                                        }
-                                    )
-                                },
-                                content = { productEntries, errorText ->
+                                content = { productEntries, _ ->
                                     CatalogGrid(
                                         state = gridState,
                                         modifier = Modifier
@@ -143,14 +134,6 @@ private fun CatalogContent(
                                         entries = productEntries,
                                         onClick = { entry ->
                                             navigateToDetail(entry.id)
-                                        },
-                                        reloadContent = {
-                                            PlaceHolderNotice(
-                                                buttonText = stringResource(id = R.string.error_occurred_try_reload),
-                                                onClick = {
-                                                    item.refresh()
-                                                }
-                                            )
                                         }
                                     )
                                 }

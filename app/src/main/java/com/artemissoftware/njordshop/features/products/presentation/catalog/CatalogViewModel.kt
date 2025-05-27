@@ -15,6 +15,7 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.stateIn
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -29,7 +30,7 @@ internal class CatalogViewModel @Inject constructor(
     private var hasLoadedInitialData = false
 
     private val _state = MutableStateFlow(CatalogState())
-    val state = _state
+    val state = _state.asStateFlow()
         .onStart {
             if (!hasLoadedInitialData) {
                 preloadCatalog()
@@ -60,11 +61,17 @@ internal class CatalogViewModel @Inject constructor(
         }
     }
 
-    private fun preloadCatalog() = with(_state) {
+    private fun preloadCatalog(forceReload: Boolean = false) = with(_state) {
+
+        update {
+            it.copy(isLoading = true, error = null)
+        }
+
         viewModelScope.launch {
             preloadCatalogUseCase()
                 .onSuccess {
-                    // TODO: verificar se necessita de ser limpo no caso de falhar `aprimeira vez
+                    if(forceReload)
+                        getCatalog()
                 }
                 .onFailure { error ->
                     update {
@@ -84,7 +91,7 @@ internal class CatalogViewModel @Inject constructor(
     }
 
     private fun reloadPreloadCatalog(){
-        preloadCatalog()
+        preloadCatalog(true)
     }
 
     private fun getCatalog() = with(_state) {
@@ -92,7 +99,7 @@ internal class CatalogViewModel @Inject constructor(
             .cachedIn(viewModelScope)
 
         update {
-            it.copy(products = products)
+            it.copy(products = products, isLoading = false)
         }
     }
 
