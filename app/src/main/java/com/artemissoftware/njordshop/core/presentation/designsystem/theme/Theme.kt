@@ -1,4 +1,4 @@
-@file:OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
+@file:OptIn(ExperimentalMaterial3WindowSizeClassApi::class, ExperimentalMaterial3AdaptiveApi::class)
 
 package com.artemissoftware.njordshop.core.presentation.designsystem.theme
 
@@ -6,6 +6,8 @@ import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.adaptive.ExperimentalMaterial3AdaptiveApi
+import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
@@ -57,7 +59,7 @@ fun NjordShopTheme(
     }
 
     val context = LocalContext.current
-    val windowClass = calculateWindowSizeClass(context as Activity)
+    val windowClass = currentWindowAdaptiveInfo().windowSizeClass
     val isLandScape = windowClass.widthSizeClass != WindowWidthSizeClass.Compact //is land
 
     CompositionLocalProvider (
