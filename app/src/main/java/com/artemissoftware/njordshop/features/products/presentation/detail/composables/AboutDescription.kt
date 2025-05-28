@@ -15,6 +15,7 @@ import com.artemissoftware.njordshop.core.presentation.designsystem.theme.NjordS
 import com.artemissoftware.njordshop.core.presentation.designsystem.theme.ThemePreviews
 import com.artemissoftware.njordshop.core.presentation.designsystem.theme.spacing
 import com.artemissoftware.njordshop.features.products.domain.models.Product
+import com.artemissoftware.njordshop.features.products.presentation.PreviewData
 
 @Composable
 internal fun AboutDescription(
@@ -65,9 +66,9 @@ internal fun AboutDescription(
 
 @Composable
 private fun Description(
-    @StringRes title: Int? = null,
     text: String,
     modifier: Modifier = Modifier,
+    @StringRes title: Int? = null,
 ) {
     Row(
         modifier = modifier,
@@ -93,10 +94,10 @@ private fun Description(
 @Composable
 private fun AboutDescriptionPreview() {
     NjordShopTheme {
-//        AboutDescription(
-//            product = PreviewData.pokemon,
-//            modifier = Modifier.fillMaxWidth(),
-//        )
+        AboutDescription(
+            product = PreviewData.product,
+            modifier = Modifier.fillMaxWidth(),
+        )
     }
 }
 

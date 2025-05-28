@@ -18,6 +18,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.artemissoftware.njordshop.R
 import com.artemissoftware.njordshop.core.presentation.designsystem.theme.NjordShopTheme
+import com.artemissoftware.njordshop.core.presentation.designsystem.theme.ThemePreviews
 import com.artemissoftware.njordshop.core.presentation.ui.composables.loading.LoadingProgress
 import com.artemissoftware.njordshop.core.presentation.ui.composables.placeholder.PlaceHolderContent
 import com.artemissoftware.njordshop.core.presentation.ui.models.ErrorData
@@ -110,7 +111,7 @@ fun NSScaffoldDouble(
     )
 }
 
-@Preview
+@ThemePreviews
 @Composable
 private fun NSScaffoldPreview() {
     NjordShopTheme {
@@ -135,8 +136,7 @@ private fun NSScaffoldPreview() {
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Preview
+@ThemePreviews
 @Composable
 private fun NSScaffoldDoublePreview() {
     NjordShopTheme {

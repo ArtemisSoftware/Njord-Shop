@@ -18,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import com.artemissoftware.njordshop.core.presentation.designsystem.theme.NjordShopTheme
+import com.artemissoftware.njordshop.core.presentation.designsystem.theme.ThemePreviews
 import com.artemissoftware.njordshop.core.presentation.ui.composables.text.UiText
 
 @Composable
@@ -71,7 +72,7 @@ fun NSDropDown(
     }
 }
 
-@Preview
+@ThemePreviews
 @Composable
 private fun NSDropDownPreview() {
     NjordShopTheme {

@@ -38,6 +38,7 @@ import com.artemissoftware.njordshop.core.presentation.designsystem.theme.spacin
 import com.artemissoftware.njordshop.core.presentation.designsystem.window.WindowContent
 import com.artemissoftware.njordshop.core.presentation.ui.composables.scaffold.NSScaffold
 import com.artemissoftware.njordshop.core.presentation.ui.composables.scaffold.NSScaffoldDouble
+import com.artemissoftware.njordshop.features.products.presentation.PreviewData
 import com.artemissoftware.njordshop.features.products.presentation.detail.composables.AboutDescription
 import com.artemissoftware.njordshop.features.products.presentation.detail.composables.DetailMediumTopAppBar
 import com.artemissoftware.njordshop.features.products.presentation.detail.composables.DetailTopBar
@@ -225,7 +226,7 @@ private fun LandScapeContent(
 private fun DetailContentPreview() {
     NjordShopTheme {
         DetailContent(
-            state = DetailState(),
+            state = PreviewData.detailState,
             onPopBack = {},
         )
     }

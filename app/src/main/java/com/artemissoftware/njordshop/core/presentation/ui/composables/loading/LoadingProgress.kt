@@ -11,6 +11,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import com.artemissoftware.njordshop.core.presentation.designsystem.theme.NjordShopTheme
+import com.artemissoftware.njordshop.core.presentation.designsystem.theme.ThemePreviews
 import com.artemissoftware.njordshop.core.presentation.designsystem.theme.dimension
 
 @Composable
@@ -31,5 +33,13 @@ fun LoadingProgress(isLoading: Boolean) {
                     .size(MaterialTheme.dimension.iconSizeBig),
             )
         }
+    }
+}
+
+@ThemePreviews
+@Composable
+private fun LoadingProgressPreview() {
+    NjordShopTheme {
+        LoadingProgress(true)
     }
 }

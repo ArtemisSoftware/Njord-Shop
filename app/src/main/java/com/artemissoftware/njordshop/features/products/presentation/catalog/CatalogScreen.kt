@@ -32,6 +32,7 @@ import com.artemissoftware.njordshop.core.presentation.ui.composables.pagination
 import com.artemissoftware.njordshop.core.presentation.ui.composables.placeholder.PlaceHolderContent
 import com.artemissoftware.njordshop.core.presentation.ui.composables.placeholder.PlaceHolderNotice
 import com.artemissoftware.njordshop.core.presentation.ui.composables.scaffold.NSScaffold
+import com.artemissoftware.njordshop.features.products.presentation.PreviewData
 import com.artemissoftware.njordshop.features.products.presentation.catalog.composables.CatalogGrid
 import com.artemissoftware.njordshop.features.products.presentation.catalog.composables.ShimmerCatalogGrid
 
@@ -148,39 +149,26 @@ private fun CatalogContent(
     )
 }
 
+@ThemePreviews
+@Composable
+private fun CatalogContent_SearchComplete_Preview() {
+    NjordShopTheme {
+        CatalogContent(
+            state = PreviewData.catalogState_search_complete,
+            onEvent = {},
+            navigateToDetail = {},
+        )
+    }
+}
 
-//@ThemePreviews
-//@Composable
-//private fun CatalogContentPreview() {
-//    NjordShopTheme {
-//        CatalogContent(
-//            state = PreviewData.pokedexState,
-//            onEvent = {},
-//            navigateToDetail = {},
-//        )
-//    }
-//}
-//
-//@ThemePreviews
-//@Composable
-//private fun CatalogContent_SearchComplete_Preview() {
-//    NjordShopTheme {
-//        CatalogContent(
-//            state = PreviewData.pokedexState_search_complete,
-//            onEvent = {},
-//            navigateToDetail = {},
-//        )
-//    }
-//}
-//
-//@ThemePreviews
-//@Composable
-//private fun CatalogContent_Searching_Preview() {
-//    NjordShopTheme {
-//        CatalogContent(
-//            state = PreviewData.pokedexState_searching,
-//            onEvent = {},
-//            navigateToDetail = {},
-//        )
-//    }
-//}
+@ThemePreviews
+@Composable
+private fun CatalogContent_Searching_Preview() {
+    NjordShopTheme {
+        CatalogContent(
+            state = PreviewData.catalogState_searching,
+            onEvent = {},
+            navigateToDetail = {},
+        )
+    }
+}

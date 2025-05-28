@@ -18,6 +18,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import com.artemissoftware.njordshop.R
+import com.artemissoftware.njordshop.core.presentation.designsystem.theme.NjordShopTheme
+import com.artemissoftware.njordshop.core.presentation.designsystem.theme.ThemePreviews
 
 @Composable
 internal fun DetailMediumTopAppBar(
@@ -50,4 +52,14 @@ internal fun DetailMediumTopAppBar(
         },
         scrollBehavior = scrollBehavior
     )
+}
+
+@ThemePreviews
+@Composable
+private fun DetailMediumTopAppBarPreview() {
+    NjordShopTheme {
+        DetailMediumTopAppBar(
+            onBackClick = {},
+        )
+    }
 }

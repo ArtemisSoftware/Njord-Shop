@@ -27,9 +27,11 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.artemissoftware.njordshop.R
 import com.artemissoftware.njordshop.core.presentation.designsystem.theme.NjordShopTheme
+import com.artemissoftware.njordshop.core.presentation.designsystem.theme.ThemePreviews
 import com.artemissoftware.njordshop.core.presentation.designsystem.theme.spacing
 import com.artemissoftware.njordshop.core.presentation.ui.composables.dropdown.NSDropDown
 import com.artemissoftware.njordshop.core.presentation.ui.composables.scaffold.NSScaffold
+import com.artemissoftware.njordshop.features.form.presentation.PreviewData
 import com.artemissoftware.njordshop.features.form.presentation.validation.composables.DeliveryDateDialog
 
 @Composable
@@ -183,12 +185,12 @@ private fun ValidationContent(
     )
 }
 
-@Preview
+@ThemePreviews
 @Composable
 private fun ValidationContentPreview() {
     NjordShopTheme {
         ValidationContent(
-            state = ValidationState(),
+            state = PreviewData.validationState,
             onEvent = {}
         )
     }

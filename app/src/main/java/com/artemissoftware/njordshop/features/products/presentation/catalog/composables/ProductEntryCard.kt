@@ -36,6 +36,7 @@ import com.artemissoftware.njordshop.core.presentation.designsystem.theme.spacin
 import com.artemissoftware.njordshop.core.presentation.designsystem.window.WindowContent
 import com.artemissoftware.njordshop.core.presentation.ui.util.extensions.shimmerEffect
 import com.artemissoftware.njordshop.features.products.domain.models.ProductEntry
+import com.artemissoftware.njordshop.features.products.presentation.PreviewData
 import com.artemissoftware.njordshop.features.products.presentation.catalog.util.extensions.getNumberOfRatingIcons
 
 
@@ -253,12 +254,7 @@ private fun Description(
 private fun ProductEntryCardPreview() {
     NjordShopTheme  {
         ProductEntryCard(
-            productEntry = ProductEntry(
-                id = 1,
-                title = "Title",
-                thumbnail = "Https://www.image.jpeg",
-                rating = 3.0
-            ),
+            productEntry = PreviewData.productEntry,
             modifier = Modifier.fillMaxWidth(),
             onClick = {},
         )

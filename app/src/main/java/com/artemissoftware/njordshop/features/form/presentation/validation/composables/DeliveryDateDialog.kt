@@ -13,6 +13,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.artemissoftware.njordshop.R
 import com.artemissoftware.njordshop.core.presentation.designsystem.theme.NjordShopTheme
+import com.artemissoftware.njordshop.core.presentation.designsystem.theme.ThemePreviews
 import java.time.DayOfWeek
 import java.time.Instant
 import java.time.LocalDate
@@ -69,7 +70,7 @@ private fun isValidateDate(millis: Long?): Pair<Boolean, LocalDate?> {
     return isValid to localDate
 }
 
-@Preview
+@ThemePreviews
 @Composable
 private fun DeliveryDateDialogPreview() {
     NjordShopTheme {
