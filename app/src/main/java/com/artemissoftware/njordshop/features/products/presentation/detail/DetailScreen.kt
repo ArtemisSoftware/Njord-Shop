@@ -189,14 +189,16 @@ private fun LandScapeContent(
                         .fillMaxWidth(),
                     onBackClick = onPopBack,
                 )
-
                 AsyncImage(
-                    modifier = Modifier,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(MaterialTheme.spacing.spacing4),
                     model = request
                         .build(),
                     contentDescription = null,
-                    contentScale = ContentScale.Crop,
+                    contentScale = ContentScale.Fit,
                 )
+
             }
         },
         contentRight = {
